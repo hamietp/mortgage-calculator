@@ -1,5 +1,5 @@
 {
-  "name": "Mortgage Calculator",
+  "name": "mortgage-calculator",
   "version": "1.0.0",
   "description": "Mortgage Calculator made with a Webpack boilerplate",
   "main": "index.js",

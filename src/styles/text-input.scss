@@ -1,5 +1,5 @@
 .calculator {
-  &__text-input {
+  &__slider-box {
     box-sizing: border-box;
     font-family: 'Graphik-Medium', sans-serif;
     font-style: normal;
@@ -14,5 +14,66 @@
     border-radius: 8px;
 
     padding: 14px 32.5px;
+
+    width: 88px;
+    height: 48px;
+  }
+
+  /* Loan Amount / Tax / Annual Insurance inputs */
+  .loan-values {
+    padding-left: 12px;
+    padding-right: 16px;
+
+    &__text-input {
+      box-sizing: border-box;
+      font-family: 'Graphik-Medium', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 125%;
+
+      text-align: center;
+      color: #000;
+
+      border: 1px solid $base-grey;
+      border-radius: 8px;
+
+      padding: 14px 32.5px;
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+
+      width: 100%;
+      height: 48px;
+    }
+
+    &__row {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+      width: 100%;
+
+      &__text-input {
+        box-sizing: border-box;
+        font-family: 'Graphik-Medium', sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 125%;
+
+        text-align: center;
+        color: #000;
+        text-align: center;
+
+        width: 148px;
+
+        padding: 14px 24px;
+        margin-top: 0.5rem;
+
+        background: #fff;
+        border: 1px solid $base-grey;
+        border-radius: 8px;
+      }
+    }
   }
 }
