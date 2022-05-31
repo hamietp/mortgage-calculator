@@ -1,0 +1,30 @@
+.slider-input {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    &__range {
+      margin-left: 1.5rem;
+      margin-right: 0.75rem;
+    }
+
+    &__min-number,
+    &__max-number {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 14.5px;
+      line-height: 24px;
+      letter-spacing: 0.023em;
+      color: #000;
+    }
+
+    &__min-number {
+      text-align: left;
+    }
+
+    &__max-number {
+      text-align: right;
+      margin-right: 10px;
+    }
+  } 

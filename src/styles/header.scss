@@ -5,6 +5,9 @@ header {
 
   font-family: 'Publico-Medium';
   font-weight: 400;
+  font-style: normal;
+  line-height: 125%;
+  letter-spacing: -0.013em;
   color: #000;
   background: #fff;
 
@@ -14,15 +17,16 @@ header {
   /*Mobile*/
   @media screen and (min-width: $mobile-breakpoint) and (max-width: 480px) {
     height: 56px;
-    padding-left: 23px;
     font-size: 20px;
+    padding-left: 23px;
+    padding-right: 23px;
   }
 
   /*Desktop*/
   @media screen and (min-width: $desktop-breakpoint) {
     height: 4rem;
-    padding-left: 150px;
-
     font-size: 31.25px;
+    padding-left: 150px;
+    padding-right: 150px;
   }
 }
