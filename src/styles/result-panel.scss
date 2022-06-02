@@ -1,0 +1,58 @@
+.results-panel {
+  background: $background-darker;
+  padding: 24px 14px;
+  margin: 0 23.5px 58px 23.5px;
+  border-radius: 0px 0px 8px 8px;
+
+  &__label {
+    font-family: 'Graphik-Semibold';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 150%;
+
+    color: $base-black-light;
+  }
+
+  .results-container {
+    &__row {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    hr {
+      background: $base-grey-light;
+      mix-blend-mode: normal;
+      height: 1px;
+      border: 0;
+    }
+
+    hr:last-of-type {
+      margin-bottom: 54px;
+    }
+
+    &__label {
+      font-family: 'Helvetica Neue', sans-serif;
+      font-style: normal;
+      font-weight: 400;
+      font-size: 12.9px;
+      line-height: 150%;
+      letter-spacing: 0.023em;
+
+      color: $base-black-lighter;
+    }
+
+    &__value {
+      font-family: 'Graphik-Semibold';
+      font-style: normal;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 125%;
+
+      text-align: right;
+      color: #000;
+    }
+  }
+}
