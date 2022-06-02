@@ -13,7 +13,7 @@
     <div class="container">
       <p>Change values to calculate your results</p>
       <hr />
-      <form class="calculator" autocomplete="off">
+      <form class="calculator" autocomplete="off" novalidate>
         <div class="mortgage-years">
           <div class="mortgage-years__row">
             <span class="mortgage-years__label">Years of mortgage</span><br />
@@ -28,9 +28,9 @@
                 value="1"
                 step="1"
                 oninput="mortgageOutput.value=sliderMortgage.value"
-                />
-                <span class="slider-input__max-number">40</span>
-                <input
+              />
+              <span class="slider-input__max-number">40</span>
+              <input
                 class="calculator__slider-box"
                 type="text"
                 value="1"
@@ -64,14 +64,14 @@
                 type="text"
                 value="1"
                 maxlength="3"
-                pattern="[0-9]"
                 oninput="sliderInterest.value=interestOutput.value"
               />
             </div>
           </div>
         </div>
+
         <div class="loan-values">
-          <div id="js-amount-input">
+          <div class="loan-values__container">
             <span class="loan-values__label">Loan Amount</span>
             <input
               class="loan-values__text-input"
@@ -81,10 +81,13 @@
               minlength="2"
               maxlength="11"
               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+              aria-describedby="loan-amount-error"
+              required
             />
           </div>
+
           <div class="loan-values__row">
-            <div class="loan-values__row__container">
+            <div class="loan-values__container">
               <span class="loan-values__label">Annual Tax</span>
               <input
                 class="loan-values__row__text-input"
@@ -94,9 +97,11 @@
                 minlength="2"
                 maxlength="11"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                aria-describedby="annual-tax-error"
+                required
               />
             </div>
-            <div class="loan-values__row__container">
+            <div class="loan-values__container">
               <span class="loan-values__label">Annual Insurance</span>
               <input
                 class="loan-values__row__text-input"
@@ -106,12 +111,15 @@
                 minlength="2"
                 maxlength="11"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                aria-describedby="anual-insurance-error"
+                required
               />
             </div>
           </div>
         </div>
+
         <div class="calculate">
-          <button class="calculate__button">Calculate</button>
+          <button class="calculate__button" id="btn-submit" type="submit">Calculate</button>
         </div>
       </form>
     </div>
