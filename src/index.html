@@ -13,7 +13,7 @@
     <div class="container">
       <p>Change values to calculate your results</p>
       <hr />
-      <div class="calculator">
+      <form class="calculator" autocomplete="off">
         <div class="mortgage-years">
           <div class="mortgage-years__row">
             <span class="mortgage-years__label">Years of mortgage</span><br />
@@ -21,16 +21,24 @@
               <span class="slider-input__min-number">1</span>
               <input
                 class="slider-input__range"
-                id="slider-mortgage"
+                id="sliderMortgage"
                 type="range"
                 min="1"
                 max="40"
                 value="1"
                 step="1"
+                oninput="mortgageOutput.value=sliderMortgage.value"
+                />
+                <span class="slider-input__max-number">40</span>
+                <input
+                class="calculator__slider-box"
+                type="text"
+                value="1"
+                maxlength="2"
+                id="mortgageOutput"
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                oninput="sliderMortgage.value=mortgageOutput.value"
               />
-              <span class="slider-input__max-number">40</span>
-              <input class="calculator__slider-box" type="text" value="1" id="mortgage-output" />
             </div>
           </div>
         </div>
@@ -41,16 +49,24 @@
               <span class="slider-input__min-number">0.1</span>
               <input
                 class="slider-input__range"
-                id="slider-interest"
+                id="sliderInterest"
                 type="range"
                 min="0.1"
                 max="10"
                 value="1"
                 step="0.1"
-                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                oninput="interestOutput.value=sliderInterest.value"
               />
               <span class="slider-input__max-number">10</span>
-              <input class="calculator__slider-box" id="interest-output" type="text" value="2" />
+              <input
+                class="calculator__slider-box"
+                id="interestOutput"
+                type="text"
+                value="1"
+                maxlength="3"
+                pattern="[0-9]"
+                oninput="sliderInterest.value=interestOutput.value"
+              />
             </div>
           </div>
         </div>
@@ -61,7 +77,8 @@
               class="loan-values__text-input"
               id="amount-input"
               type="text"
-              value="0"
+              value="$ "
+              minlength="2"
               maxlength="9"
               onkeypress="return event.charCode >= 48 && event.charCode <= 57"
             />
@@ -73,7 +90,7 @@
                 class="loan-values__row__text-input"
                 id="tax-input"
                 type="text"
-                value="0"
+                value="$ "
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
               />
             </div>
@@ -83,7 +100,7 @@
                 class="loan-values__row__text-input"
                 id="insurance-input"
                 type="text"
-                value="0"
+                value="$ "
                 onkeypress="return event.charCode >= 48 && event.charCode <= 57"
               />
             </div>
@@ -92,7 +109,7 @@
         <div class="calculate">
           <button class="calculate__button">Calculate</button>
         </div>
-      </div>
+      </form>
     </div>
   </body>
 </html>
