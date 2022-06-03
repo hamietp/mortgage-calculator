@@ -78,65 +78,8 @@
     color: #000;
   }
 
-  /* Loan Amount / Tax / Annual Insurance inputs */
-  .loan-values {
-    padding-left: 12px;
-    padding-right: 16px;
-    text-align: left;
-
-    &__container[data-error]::after {
-      content: attr(data-error);
-      // display: none;
-      position: relative;
-      top: 8px;
-
-      font-family: 'Helvetica Neue', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 12.9px;
-      line-height: 150%;
-      letter-spacing: 0.023em;
-      color: $tiertiary-red;
-    }
-
-    &__container[data-error] input {
-      border: 1px solid $tiertiary-red;
-    }
-
-    &__row {
-      display: flex;
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 16px;
-      width: 100%;
-
-      margin-top: 24px;
-      position: relative;
-      top: 8px;
-
-      &__text-input {
-        box-sizing: border-box;
-        font-family: 'Graphik-Medium', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 16px;
-        line-height: 125%;
-
-        width: 148px;
-
-        padding: 14px 24px;
-        margin-top: 0.5rem;
-
-        color: #000;
-        background: #fff;
-        border: 1px solid $base-grey;
-        border-radius: 8px;
-      }
-    }
-  }
-
-  /*  input[type="text"] focus effects
-      These effects happen on all input[type="text"] elements
+  /*  input focus effects
+      These effects happen on all input[type="text"] and .text-input elements
   */
   input[type='text']:focus,
   .calculator__text-input:focus {
