@@ -1,57 +1,28 @@
 .container {
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.09);
+  border-radius: 8px 8px 0px 0px;
 
-  p {
-    padding-top: 1rem;
-    padding-left: 1rem;
-    font-family: 'Helvetica Neue', sans-serif;
-    font-weight: 400;
-    font-size: 12.9px;
+  &__label {
+    font-family: 'Graphik-Medium', sans-serif;
     font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
     line-height: 150%;
-    letter-spacing: 0.023em;
+
+    padding: 20px;
+    margin: 0;
   }
 
   hr {
+    margin: 0;
     border: 0;
     height: 1px;
     background: #ddd;
     mix-blend-mode: normal;
   }
 
-  .calculator {
-    .mortgage-years,
-    .rate-interest {
-      padding: 1rem 1rem 0.5rem 1rem;
-      &__label {
-        font-family: 'Graphik-Medium', sans-serif;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 12.8px;
-        line-height: 150%;
-        color: $base-black-light;
-      }
-    }
-  }
-
-  .loan-values {
-    &__label {
-      font-family: 'Graphik-Medium', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14.4px;
-      line-height: 24px;
-
-      flex: none;
-      order: 0;
-      flex-grow: 0;
-
-      color: $base-black-light;
-    }
-  }
-
   .calculate {
-    padding: 24px 16px 36px 12px;
+    padding: 8px 20px 20px 20px;
 
     &__button {
       display: flex;
@@ -61,8 +32,8 @@
       font-family: 'Graphik-Regular', sans-serif;
       font-style: normal;
       font-weight: 600;
-      font-size: 18px;
-      line-height: 28px;
+      font-size: 20px;
+      line-height: 150%;
 
       width: 100%;
       height: 3rem;
@@ -70,7 +41,7 @@
       margin-top: 8px;
 
       color: #fff;
-      background: $primary-blue;
+      background: $main-blue;
 
       border: 0;
       border-radius: 8px;

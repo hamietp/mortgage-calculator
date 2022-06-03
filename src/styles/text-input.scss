@@ -1,5 +1,65 @@
 .calculator {
-  &__slider-box {
+  &__row {
+    padding-left: 20px;
+    padding-right: 19px;
+    margin-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__row:first-of-type {
+    margin-top: 24px;
+  }
+
+  &__split {
+    display: flex;
+    margin: 0;
+    padding: 0;
+
+    input:first-of-type {
+      width: 70%;
+      border-radius: 8px 0 0 8px;
+    }
+    input:last-of-type {
+      padding: 10px;
+      width: 30%;
+      border-radius: 0 8px 8px 0;
+      border-left: 0;
+    }
+  }
+
+  &__row[data-error]::after {
+    content: attr(data-error);
+    position: relative;
+    top: 8px;
+
+    font-family: 'Helvetica Neue', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12.9px;
+    line-height: 150%;
+    letter-spacing: 0.023em;
+    color: $tiertiary-red;
+  }
+
+  &__row[data-error] input,
+  &__split[data-error] input {
+    border: 1px solid $tiertiary-red;
+  }
+
+  &__label {
+    font-family: 'Graphik-Medium', sans-serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 170%;
+    letter-spacing: 0.023em;
+    margin-bottom: 8px;
+    margin-top: 16px;
+
+    color: $base-black-light;
+  }
+
+  &__text-input {
     box-sizing: border-box;
     font-family: 'Graphik-Medium', sans-serif;
     font-style: normal;
@@ -7,14 +67,13 @@
     font-size: 16px;
     line-height: 125%;
 
+    width: 100%;
     height: 48px;
-    width: 88px;
 
-    border: 1px solid $base-grey;
+    border: 1px solid $neutral-base;
     border-radius: 8px;
-    padding: 14px 30px;
 
-    text-align: center;
+    padding: 10px 24px;
 
     color: #000;
   }
@@ -42,26 +101,6 @@
 
     &__container[data-error] input {
       border: 1px solid $tiertiary-red;
-    }
-
-    &__text-input {
-      box-sizing: border-box;
-      font-family: 'Graphik-Medium', sans-serif;
-      font-style: normal;
-      font-weight: 400;
-      font-size: 16px;
-      line-height: 125%;
-
-      width: 100%;
-      height: 48px;
-
-      border: 1px solid $base-grey;
-      border-radius: 8px;
-
-      padding: 14px 24px;
-      margin-top: 0.5rem;
-
-      color: #000;
     }
 
     &__row {
@@ -99,11 +138,12 @@
   /*  input[type="text"] focus effects
       These effects happen on all input[type="text"] elements
   */
-  input[type='text']:focus {
+  input[type='text']:focus,
+  .calculator__text-input:focus {
     outline: none;
     background: $primary-blue-ui;
     border: 1px solid $primary-blue-dark;
-    border-radius: 8px;
+    // border-radius: 8px;
     filter: drop-shadow(0px 4px 12px rgba(0, 0, 0, 0.2));
     transition: all 0.1s ease-in-out;
   }
