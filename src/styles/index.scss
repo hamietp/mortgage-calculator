@@ -1,7 +1,9 @@
-@font-face {
-  font-family: 'Inter';
-  src: url('../fonts/Inter.ttf');
-}
-
 @import 'variables';
 @import 'scaffolding';
+@import 'fonts';
+
+@import 'container.scss';
+@import 'header.scss';
+@import 'text-input.scss';
+@import 'result-panel.scss';
+@import 'dropdown.scss';
