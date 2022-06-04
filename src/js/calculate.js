@@ -60,11 +60,12 @@ submitButton.addEventListener('click', (event) => {
     interestRate.parentElement.setAttribute('data-error', 'Interest cannot be less than 0');
     event.preventDefault();
   }
-  let totalMonthlyPayment = 0;
   let formula =
     ((interestRateValue / 100 / 12) * loanAmount) / (1 - Math.pow(1 + interestRateValue / 100 / 12, -yearsOfMortgageValue * 12));
 
-  isNaN(formula) ? (totalMonthlyPayment = '$ --') : (totalMonthlyPayment = formula.toFixed(2));
+  let valueUnchanged = document.createTextNode('$ --');
+  let newValue = document.createTextNode(`${formula.toFixed(2)}`);
 
-  totalMonthlyPayment.innerText = `$ ${totalMonthlyPayment}`;
+  /** Checks if the final number is valid and prints it. */
+  isNaN(formula) ? (totalMonthlyPayment.textContent = valueUnchanged.data) : (totalMonthlyPayment.textContent = `$ ${newValue.data}`);
 });

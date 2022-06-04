@@ -48,12 +48,7 @@ formattedInputs.forEach((element) => {
  */
 textInputs.forEach((element) => {
   element.addEventListener('focus', () => {
-    element.parentElement.removeAttribute('data-error');
-
-    /** Split input */
-    if(element === downPayment){
-      element.parentElement.parentElement.removeAttribute('data-error');
-    }
+    element.parentElement.removeAttribute('data-error') | element.parentElement.parentElement.removeAttribute('data-error');
   });
 });
 
@@ -90,7 +85,7 @@ formattedInputs.forEach((element) => {
 
 interestRate.addEventListener('input', () => {
   if (interestRate.value.length > interestRate.maxLength) {
-    interestRate.value = interestRate.value.slice(0, interestRate.maxLength+1);
+    interestRate.value = interestRate.value.slice(0, interestRate.maxLength + 1);
   }
 });
 
