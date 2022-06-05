@@ -104,7 +104,7 @@ const percCheckDownPayment = downPayment.addEventListener('focusout', () => {
 
     loanAmountPercentage.value = `${(100 - downPaymentPercentage)
       .toFixed(2)
-      .replace(/\.00$/, '')}  %`;
+      .replace(/\.00$/, '')} %`;
   }
 });
 
