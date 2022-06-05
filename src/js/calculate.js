@@ -9,6 +9,8 @@ EventTarget.prototype.addEventListener = (() => {
   };
 })();
 
+import { removeAttr } from './textInputs';
+
 let homePrice = document.getElementById('homePrice'); // Home Price
 let downPayment = document.getElementById('downPayment'); // Down Payment
 let yearsOfMortgage = document.getElementById('yearsOfMortgage'); // Loan Term
@@ -32,10 +34,12 @@ let submitButton = document.getElementById('btn-submit');
  *
  */
 
-submitButton.addEventListener('click', (event) => {
+const submitValues = submitButton.addEventListener('click', (event) => {
   let homePriceValue = event.currentTarget.form.homePrice.value; // Home Price
   let downPaymentValue = event.currentTarget.form.downPayment.value; // Down Payment
-  let yearsOfMortgageValue = Number(event.currentTarget.form.yearsOfMortgage.value); // Loan Term
+  let yearsOfMortgageValue = Number(
+    event.currentTarget.form.yearsOfMortgage.value
+  ); // Loan Term
   let interestRateValue = Number(event.currentTarget.form.interestRate.value); // Interest Rate (%)
 
   let calcHomePrice = Number(homePriceValue.replace(/[^0-9]/g, ''));
@@ -46,26 +50,59 @@ submitButton.addEventListener('click', (event) => {
 
   /** Error message for each field that actually has errors */
   userInputs.forEach((input) => {
+    input.parentElement.removeAttribute('data-error') |
+      input.parentElement.parentElement.removeAttribute('data-error');
+      
     if (input.value === '$' || input.value === '') {
       event.preventDefault();
       input.parentElement.setAttribute('data-error', 'Mandatory field') |
-        input.parentElement.parentElement.setAttribute('data-error', 'Mandatory field');
+        input.parentElement.parentElement.setAttribute(
+          'data-error',
+          'Mandatory field'
+        );
     }
   });
 
   if (calcDownPayment > calcHomePrice) {
-    downPayment.parentElement.parentElement.setAttribute('data-error', 'Down payment cannot be greater than home price');
+    downPayment.parentElement.parentElement.setAttribute(
+      'data-error',
+      'Down payment cannot be greater than home price'
+    );
     event.preventDefault();
   } else if (interestRateValue < 0) {
-    interestRate.parentElement.setAttribute('data-error', 'Interest cannot be less than 0');
+    interestRate.parentElement.setAttribute(
+      'data-error',
+      'Interest cannot be less than 0'
+    );
     event.preventDefault();
   }
-  let formula =
-    ((interestRateValue / 100 / 12) * loanAmount) / (1 - Math.pow(1 + interestRateValue / 100 / 12, -yearsOfMortgageValue * 12));
 
+  printFinalResults(
+    calculationFormula(interestRateValue, loanAmount, yearsOfMortgageValue)
+  );
+});
+/**
+ * @param {number} intRateVal Interest Rate(%)
+ * @param {number} loanAmt Loan Amount ($)
+ * @param {number} years Loan Term
+ * @returns {number} Total Monthly Payment
+ */
+function calculationFormula(intRateVal, loanAmt, years) {
+  let formula =
+    ((intRateVal / 100 / 12) * loanAmt) /
+    (1 - Math.pow(1 + intRateVal / 100 / 12, -years * 12));
+  return formula;
+}
+
+/**
+ * @param {number} formula calculated value for Total Monthly Payment
+ */
+function printFinalResults(formula) {
   let valueUnchanged = document.createTextNode('$ --');
   let newValue = document.createTextNode(`${formula.toFixed(2)}`);
 
   /** Checks if the final number is valid and prints it. */
-  isNaN(formula) ? (totalMonthlyPayment.textContent = valueUnchanged.data) : (totalMonthlyPayment.textContent = `$ ${newValue.data}`);
-});
+  isNaN(formula) || formula < 0
+    ? (totalMonthlyPayment.textContent = valueUnchanged.data)
+    : (totalMonthlyPayment.textContent = `$ ${newValue.data}`);
+}

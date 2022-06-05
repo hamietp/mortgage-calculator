@@ -27,14 +27,13 @@ EventTarget.prototype.addEventListener = (() => {
  * Applies formatting on focus and focusout events,
  * as well as do not let the user delete the currency prefix.
  */
-formattedInputs.forEach((element) => {
-  element
-    .addEventListener('focus', () => {})
-    .addEventListener('input', () => {
-      if (element.value.length < 2) {
-        element.value = '$';
-      }
-    });
+const formatCurrencyValues = formattedInputs.forEach((element) => {
+  element.addEventListener('input', () => {
+    if (element.value.length < 2) {
+      element.value = '$';
+    }
+  });
+
   element.addEventListener('focusout', () => {
     if (element.value === '') {
       element.value = '$';
@@ -46,13 +45,14 @@ formattedInputs.forEach((element) => {
  * Removes the data-error attribute from each input separately
  * when the user focus the input again.
  */
-textInputs.forEach((element) => {
+const removeDataErrorAttr = textInputs.forEach((element) => {
   element.addEventListener('focus', () => {
-    element.parentElement.removeAttribute('data-error') | element.parentElement.parentElement.removeAttribute('data-error');
+    element.parentElement.removeAttribute('data-error') |
+      element.parentElement.parentElement.removeAttribute('data-error');
   });
 });
 
-formattedInputs.forEach((element) => {
+const inputFocusEvents = formattedInputs.forEach((element) => {
   element
     .addEventListener('focus', () => {
       // Places the cursor after the last digit
@@ -83,13 +83,16 @@ formattedInputs.forEach((element) => {
     });
 });
 
-interestRate.addEventListener('input', () => {
+const interestRateMaxLength = interestRate.addEventListener('input', () => {
   if (interestRate.value.length > interestRate.maxLength) {
-    interestRate.value = interestRate.value.slice(0, interestRate.maxLength + 1);
+    interestRate.value = interestRate.value.slice(
+      0,
+      interestRate.maxLength + 1
+    );
   }
 });
 
-downPayment.addEventListener('focusout', () => {
+const percCheckDownPayment = downPayment.addEventListener('focusout', () => {
   let calcHomePrice = homePrice.value.replace(/\D/g, '');
   let calcDownPayment = downPayment.value.replace(/\D/g, '');
 
@@ -99,11 +102,13 @@ downPayment.addEventListener('focusout', () => {
     let loanAmount = calcHomePrice - calcDownPayment;
     let downPaymentPercentage = (loanAmount / calcHomePrice) * 100;
 
-    loanAmountPercentage.value = `${(100 - downPaymentPercentage).toFixed(2)} %`;
+    loanAmountPercentage.value = `${(100 - downPaymentPercentage)
+      .toFixed(2)
+      .replace(/\.00$/, '')}  %`;
   }
 });
 
-homePrice.addEventListener('focusout', () => {
+const percCheckHomePrice = homePrice.addEventListener('focusout', () => {
   let calcHomePrice = homePrice.value.replace(/\D/g, '');
   let calcDownPayment = downPayment.value.replace(/\D/g, '');
 
@@ -113,6 +118,8 @@ homePrice.addEventListener('focusout', () => {
     let loanAmount = calcHomePrice - calcDownPayment;
     let downPaymentPercentage = (loanAmount / calcHomePrice) * 100;
 
-    loanAmountPercentage.value = `${(100 - downPaymentPercentage).toFixed(2)} %`;
+    loanAmountPercentage.value = `${(100 - downPaymentPercentage)
+      .toFixed(2)
+      .replace(/\.00$/, '')} %`;
   }
 });

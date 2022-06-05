@@ -1,14 +1,3 @@
-/**
- * Allows eventListener chaining
- */
-EventTarget.prototype.addEventListener = (() => {
-  const addEventListener = EventTarget.prototype.addEventListener;
-  return function () {
-    addEventListener.apply(this, arguments);
-    return this;
-  };
-})();
-
 const dropdownValues = document.getElementById('yearsOfMortgage');
 
 /** Creating 30 options for the dropdown menu 
