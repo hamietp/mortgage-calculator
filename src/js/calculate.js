@@ -1,4 +1,4 @@
-import currencyFormatter from '../js/textInputs.js'
+import currencyFormatter from '../js/textInputs.js';
 /**
  * Allows eventListener chaining
  */
@@ -43,7 +43,7 @@ calcFormSubmit.addEventListener('submit', (e) => {
 function submitValues(event) {
   let homePriceValue = document.getElementById('homePrice').value; // Home Price
   let downPaymentValue = document.getElementById('downPayment').value; // Down Payment
-  let yearsOfMortgageValue = document.getElementById('yearsOfMortgage').value; // Loan Term
+  let yearsOfMortgageValue = Number(document.getElementById('yearsOfMortgage').value); // Loan Term
   let interestRateValue = document.getElementById('interestRate').value; // Interest Rate (%)
 
   let calcHomePrice = Number(homePriceValue.replace(/[^0-9]/g, ''));
@@ -53,6 +53,8 @@ function submitValues(event) {
   const userInputs = [homePrice, downPayment, interestRate];
 
   let loanAmount = calcHomePrice - calcDownPayment;
+
+  debugger;
 
   /** Error message for each field that actually has errors */
   userInputs.forEach((input) => {
@@ -95,10 +97,17 @@ function submitValues(event) {
  * @returns {number} Total Monthly Payment
  */
 function calculationFormula(intRateVal, loanAmt, years) {
-  let formula =
-    ((intRateVal / 100 / 12) * loanAmt) /
-    (1 - Math.pow(1 + intRateVal / 100 / 12, -years * 12));
-  return formula;
+  let formula;  
+
+  if (intRateVal === 0) {
+    formula = loanAmt / (years*12);
+    return formula;
+  } else {
+    formula =
+      ((intRateVal / 100 / 12) * loanAmt) /
+      (1 - Math.pow(1 + intRateVal / 100 / 12, -years * 12));
+    return formula;
+  }
 }
 
 /**
