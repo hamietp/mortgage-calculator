@@ -65,7 +65,7 @@ formattedInputs.forEach((element) => {
       const eol = element.value.length;
       element.setSelectionRange(eol, eol);
 
-      if (element.value === '$0' || element.value === '') {
+      if (element.value === '$' || element.value === '') {
         element.value = '$';
       } else {
         element.value = element.value.replace(/[^0-9.$]/g, '');
@@ -73,7 +73,7 @@ formattedInputs.forEach((element) => {
       }
     })
     .addEventListener('input', () => {
-      if (element.value.length < 2 || element.value === '$0') {
+      if (element.value.length < 2 || element.value === '$') {
         element.value = '$';
       }
     })
@@ -105,7 +105,7 @@ downPayment.addEventListener('focusout', () => {
   let calcHomePrice = homePrice.value.replace(/\D/g, '');
   let calcDownPayment = downPayment.value.replace(/\D/g, '');
 
-  if (calcHomePrice === '' || calcDownPayment === '') {
+  if (calcHomePrice === '' || calcDownPayment === '' || calcHomePrice === '0' || calcDownPayment === '0') {
     return;
   } else {
     let loanAmount = calcHomePrice - calcDownPayment;
@@ -121,7 +121,7 @@ homePrice.addEventListener('focusout', () => {
   let calcHomePrice = homePrice.value.replace(/\D/g, '');
   let calcDownPayment = downPayment.value.replace(/\D/g, '');
 
-  if (calcDownPayment === '' || calcHomePrice === '') {
+  if (calcDownPayment === '' || calcHomePrice === '' || calcHomePrice === '0' || calcDownPayment === '0') {
     return;
   } else {
     let loanAmount = calcHomePrice - calcDownPayment;
