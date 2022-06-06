@@ -58,7 +58,7 @@
     }
 
     &__disclaimer {
-      font-family: 'Graphik-Regular';
+      font-family: 'Graphik-Medium';
       font-style: normal;
       font-weight: 400;
       font-size: 11px;
@@ -79,8 +79,10 @@
       }
     }
   }
-
-  @media screen and (min-width: $desktop-breakpoint) {
+}
+@media screen and (min-width: $desktop-breakpoint) {
+  .results-panel {
+    width: -webkit-fill-available;
     margin: 0;
     padding-top: 44px;
     padding-left: 33px;
@@ -93,7 +95,6 @@
 
       color: #fff;
     }
-
     .results-container {
       &__label {
         margin-top: 32px;

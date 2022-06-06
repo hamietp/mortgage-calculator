@@ -5,7 +5,7 @@ html {
 body {
   margin: 0;
   /*Mobile*/
-  @media screen and (min-width: $mobile-breakpoint) and (max-width: 768px) {
+  @media screen and (min-width: $mobile-breakpoint) and (max-width: 767px) {
     .container {
       background: #fff;
 
@@ -23,6 +23,7 @@ body {
     .split-container {
       display: flex;
       margin-top: 63.17px;
+      margin-bottom: 63.17px;
       margin-left: 5%;
 
       width: 90%;
@@ -36,6 +37,8 @@ body {
 
         padding-left: 53px;
         padding-right: 56px;
+
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
 
         border-radius: 8px 0px 0px 8px;
       }
