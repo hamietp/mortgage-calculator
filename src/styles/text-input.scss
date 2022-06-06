@@ -79,6 +79,47 @@
     color: #000;
   }
 
+  @media screen and (min-width: $desktop-breakpoint) {
+    .calculator {
+      &__row {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 4px;
+        margin-top: 4px;
+        padding: 0;
+      }
+
+      &__label {
+        margin-top: 24px;
+        font-size: 14px;
+        line-height: 170%;
+      }
+      &__text-input {
+        line-height: 175%;
+      }
+      @media screen and (max-width: 1100px) {
+        &__text-input {
+          font-size: 12px;
+          padding: 10px;
+        }
+
+        &__label {
+          white-space: nowrap;
+        }
+
+        &__split {
+          input:first-of-type {
+            width: 60%;
+          }
+          input:last-of-type {
+            padding-left: 8px;
+            width: 40%;
+          }
+        }
+      }
+    }
+  }
+
   /*  input focus effects
       These effects happen on all input[type="text"] and .text-input elements
   */

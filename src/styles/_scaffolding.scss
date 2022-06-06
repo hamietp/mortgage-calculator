@@ -4,22 +4,44 @@ html {
 
 body {
   margin: 0;
-
   /*Mobile*/
-  .container {
-    background: #fff;
+  @media screen and (min-width: $mobile-breakpoint) and (max-width: 767px) {
+    .container {
+      background: #fff;
 
-    @media screen and (min-width: $mobile-breakpoint) and (max-width: 480px) {
       margin-top: 24px;
       margin-left: 17.5px;
       margin-right: 17.5px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
     }
+  }
 
-    /*Desktop*/
-    @media screen and (min-width: $desktop-breakpoint) {
-      margin-left: 150px;
-      margin-right: 150px;
+  background: #fff;
+
+  /*Desktop*/
+  @media screen and (min-width: $desktop-breakpoint) {
+    .split-container {
+      display: flex;
+      margin-top: 63.17px;
+      margin-bottom: 63.17px;
+      margin-left: 5%;
+
+      width: 90%;
+
+      border-radius: 8px;
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+      
+      .container {
+        flex-direction: column;
+        display: flex;
+
+        padding-left: 53px;
+        padding-right: 56px;
+
+      box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2);
+
+        border-radius: 8px 0px 0px 8px;
+      }
     }
   }
 }
-

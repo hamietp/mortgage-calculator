@@ -15,7 +15,7 @@ header {
   align-items: center;
 
   /*Mobile*/
-  @media screen and (min-width: $mobile-breakpoint) and (max-width: 480px) {
+  @media screen and (min-width: 280px) and (max-width: 768px) {
     height: 56px;
     font-size: 20px;
     padding-left: 23px;
@@ -26,7 +26,7 @@ header {
   @media screen and (min-width: $desktop-breakpoint) {
     height: 4rem;
     font-size: 31.25px;
-    padding-left: 150px;
+    padding-left: 5%;
     padding-right: 150px;
   }
 }

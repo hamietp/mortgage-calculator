@@ -10,62 +10,99 @@
 
   <body>
     <header>Mortgage Calculator</header>
-    <div class="container">
-      <p class="container__label">Change values to calculate your results</p>
-      <hr />
-      <form class="calculator" autocomplete="off" onsubmit="return false" novalidate>
-        <div class="calculator__row" >
-          <div class="calculator__label">Home Price</div>
-          <input
-            type="text"
-            class="calculator__text-input"
-            maxlength="11"
-            minlength="1"
-            id="homePrice"
-            value="$"
-            onkeypress="return event.keyCode >= 48 && event.keyCode <= 57"
-          />
-        </div>
-
-        <div class="calculator__row">
-          <div class="calculator__label">Down Payment</div>
-          <div class="calculator__split">
-            <input class="calculator__text-input split" type="text" id="downPayment" value="$" onkeypress="return event.keyCode >= 48 && event.keyCode <= 57"/>
-            <input class="calculator__text-input split" id="loanAmountPercentage" tabindex="-1" maxlength="4" readonly />
+    <div class="split-container">
+      <div class="container">
+        <p class="container__label">Change values to calculate your results</p>
+        <hr />
+        <form
+          class="calculator"
+          autocomplete="off"
+          id="calculatorForm"
+          novalidate
+        >
+          <div class="calculator__row">
+            <div class="calculator__label">Home Price</div>
+            <input
+              type="text"
+              class="calculator__text-input"
+              maxlength="11"
+              minlength="1"
+              id="homePrice"
+              value="$"
+            />
           </div>
-        </div>
 
-        <div class="calculator__row">
-          <div class="calculator__label">Loan Term</div>
-          <select class="calculator__text-input dropdown" id="yearsOfMortgage"></select>
-        </div>
+          <div class="calculator__row">
+            <div class="calculator__label">Down Payment</div>
+            <div class="calculator__split">
+              <input
+                class="calculator__text-input split"
+                type="text"
+                id="downPayment"
+                value="$"
+              />
+              <input
+                class="calculator__text-input split"
+                id="loanAmountPercentage"
+                tabindex="-1"
+                maxlength="4"
+                readonly
+              />
+            </div>
+          </div>
 
-        <div class="calculator__row">
-          <div class="calculator__label">Interest Rate(%)</div>
-          <input class="calculator__text-input" type="number" maxlength="4" id="interestRate"/>
-        </div>
+          <div class="calculator__row">
+            <div class="calculator__label">Loan Term</div>
+            <select
+              class="calculator__text-input dropdown"
+              id="yearsOfMortgage"
+            ></select>
+          </div>
 
-        <div class="calculate">
-          <button class="calculate__button" id="btn-submit">Calculate</button>
-        </div>
-      </form>
-    </div>
-    <div class="results-panel">
-      <span class="results-panel__label">Your results</span>
-      <hr />
-      <div class="results-container">
-        <div class="results-container__row">
-          <span class="results-container__label">Total Monthly Payment</span>
-          <span class="results-container__value" id="totalMonthlyPayment">$ --</span>
-        </div>
-        <div class="results-container__row">
-          <div class="results-container__disclaimer">
-            <p>This estimate is based on a fixed interest rate and does not include mortgage loan insurance premiums.</p>
-            <br />
-            <p>
-              These calculations are for guidance only. You will need to contact a mortgage lender directly to find out exactly how much
-              your monthly payments would be.
-            </p>
+          <div class="calculator__row col2">
+            <div class="calculator__label">Interest Rate(%)</div>
+            <input
+              class="calculator__text-input"
+              type="text"
+              maxlength="4"
+              id="interestRate"
+              value="%"
+            />
+          </div>
+
+          <div class="calculate">
+            <input
+              class="calculate__button"
+              type="submit"
+              value="Calculate"
+              id="btn-submit"
+            />
+          </div>
+        </form>
+      </div>
+      <div class="results-panel">
+        <span class="results-panel__label">Your results</span>
+        <hr />
+        <div class="results-container">
+          <div class="results-container__row">
+            <span class="results-container__label">Total Monthly Payment</span>
+            <span class="results-container__value" id="totalMonthlyPayment"
+              >$ --</span
+            >
+          </div>
+          <div class="results-container__row">
+            <div class="results-container__disclaimer">
+              <p>
+                This estimate is based on a fixed interest rate and does not
+                include mortgage loan insurance premiums.
+              </p>
+              <br />
+              <p>
+                These calculations are for guidance only. You will need to
+                contact a mortgage lender directly to find out exactly how much
+                your monthly payments would be.
+              </p>
+            </div>
           </div>
         </div>
       </div>

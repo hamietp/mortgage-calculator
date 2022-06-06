@@ -7,10 +7,16 @@ let loanAmountPercentage = document.getElementById('loanAmountPercentage');
 const formattedInputs = [homePrice, downPayment];
 const textInputs = [homePrice, downPayment, interestRate];
 
-let formatter = new Intl.NumberFormat('en-US', {
-  style: 'currency',
-  currency: 'USD',
-});
+function currencyFormatter(value) {
+  value = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+  });
+
+  return value;
+}
+
+export default currencyFormatter;
 
 /**
  * Allows eventListener chaining
@@ -27,7 +33,7 @@ EventTarget.prototype.addEventListener = (() => {
  * Applies formatting on focus and focusout events,
  * as well as do not let the user delete the currency prefix.
  */
-const formatCurrencyValues = formattedInputs.forEach((element) => {
+formattedInputs.forEach((element) => {
   element.addEventListener('input', () => {
     if (element.value.length < 2) {
       element.value = '$';
@@ -45,14 +51,14 @@ const formatCurrencyValues = formattedInputs.forEach((element) => {
  * Removes the data-error attribute from each input separately
  * when the user focus the input again.
  */
-const removeDataErrorAttr = textInputs.forEach((element) => {
+textInputs.forEach((element) => {
   element.addEventListener('focus', () => {
     element.parentElement.removeAttribute('data-error') |
       element.parentElement.parentElement.removeAttribute('data-error');
   });
 });
 
-const inputFocusEvents = formattedInputs.forEach((element) => {
+formattedInputs.forEach((element) => {
   element
     .addEventListener('focus', () => {
       // Places the cursor after the last digit
@@ -71,28 +77,31 @@ const inputFocusEvents = formattedInputs.forEach((element) => {
         element.value = '$';
       }
     })
+    .addEventListener('keypress', (event) => {
+      currencyFieldsAllowedDigits(event);
+    })
     .addEventListener('focusout', () => {
       element.value = element.value.replace(/^\$/, '');
 
       element.value === ''
         ? (element.value = '$')
-        : (element.value = formatter
+        : (element.value = currencyFormatter(element.value)
             .format(element.value)
             .replace(/^(\D+)/, '$')
             .slice(0, -3));
     });
 });
 
-const interestRateMaxLength = interestRate.addEventListener('input', () => {
-  if (interestRate.value.length > interestRate.maxLength) {
-    interestRate.value = interestRate.value.slice(
-      0,
-      interestRate.maxLength + 1
-    );
-  }
-});
+interestRate
+  .addEventListener('focus', () => {
+    interestRate.value = interestRate.value.replace(/[^0-9.]/g, '');
+  })
+  .addEventListener('focusout', () => {
+    interestRate.value = interestRate.value.replace(/[^0-9.]/g, '') + '%';
+  })
+  .addEventListener('keypress', (event) => interestRateAllowedDigits(event));
 
-const percCheckDownPayment = downPayment.addEventListener('focusout', () => {
+downPayment.addEventListener('focusout', () => {
   let calcHomePrice = homePrice.value.replace(/\D/g, '');
   let calcDownPayment = downPayment.value.replace(/\D/g, '');
 
@@ -104,11 +113,11 @@ const percCheckDownPayment = downPayment.addEventListener('focusout', () => {
 
     loanAmountPercentage.value = `${(100 - downPaymentPercentage)
       .toFixed(2)
-      .replace(/\.00$/, '')}  %`;
+      .replace(/\.00$/, '')} %`;
   }
 });
 
-const percCheckHomePrice = homePrice.addEventListener('focusout', () => {
+homePrice.addEventListener('focusout', () => {
   let calcHomePrice = homePrice.value.replace(/\D/g, '');
   let calcDownPayment = downPayment.value.replace(/\D/g, '');
 
@@ -123,3 +132,21 @@ const percCheckHomePrice = homePrice.addEventListener('focusout', () => {
       .replace(/\.00$/, '')} %`;
   }
 });
+
+function currencyFieldsAllowedDigits(event) {
+  const key = event.which || event.keyCode;
+  if (key >= 48 && key <= 57) {
+    return true;
+  } else {
+    event.preventDefault();
+  }
+}
+
+function interestRateAllowedDigits(event) {
+  const key = event.which || event.keyCode;
+  if (key === 46 || key === 110 || key === 190 || (key >= 48 && key <= 57)) {
+    return true;
+  } else {
+    event.preventDefault();
+  }
+}

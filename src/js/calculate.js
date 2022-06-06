@@ -1,3 +1,4 @@
+import currencyFormatter from '../js/textInputs.js'
 /**
  * Allows eventListener chaining
  */
@@ -9,16 +10,7 @@ EventTarget.prototype.addEventListener = (() => {
   };
 })();
 
-import { removeAttr } from './textInputs';
-
-let homePrice = document.getElementById('homePrice'); // Home Price
-let downPayment = document.getElementById('downPayment'); // Down Payment
-let yearsOfMortgage = document.getElementById('yearsOfMortgage'); // Loan Term
-let interestRate = document.getElementById('interestRate'); // Interest Rate (%)
-let loanAmountPercentage = document.getElementById('loanAmountPercentage'); // Loan Amount (%)
-let totalMonthlyPayment = document.getElementById('totalMonthlyPayment'); // Total Monthly Payment
-
-let submitButton = document.getElementById('btn-submit');
+let calcFormSubmit = document.getElementById('calculatorForm');
 
 /**
  * I declared the inputs twice, because:
@@ -34,16 +26,30 @@ let submitButton = document.getElementById('btn-submit');
  *
  */
 
-const submitValues = submitButton.addEventListener('click', (event) => {
-  let homePriceValue = event.currentTarget.form.homePrice.value; // Home Price
-  let downPaymentValue = event.currentTarget.form.downPayment.value; // Down Payment
-  let yearsOfMortgageValue = Number(
-    event.currentTarget.form.yearsOfMortgage.value
-  ); // Loan Term
-  let interestRateValue = Number(event.currentTarget.form.interestRate.value); // Interest Rate (%)
+/** 'enter' key was not submitting the form (its done by default).
+ *  this is weird. */
+
+document.addEventListener('keydown', (e) => {
+  if (e.keyCode === 13) {
+    submitValues(e);
+  }
+});
+
+calcFormSubmit.addEventListener('submit', (e) => {
+  e.preventDefault();
+  submitValues(e);
+});
+
+function submitValues(event) {
+  let homePriceValue = document.getElementById('homePrice').value; // Home Price
+  let downPaymentValue = document.getElementById('downPayment').value; // Down Payment
+  let yearsOfMortgageValue = document.getElementById('yearsOfMortgage').value; // Loan Term
+  let interestRateValue = document.getElementById('interestRate').value; // Interest Rate (%)
 
   let calcHomePrice = Number(homePriceValue.replace(/[^0-9]/g, ''));
   let calcDownPayment = Number(downPaymentValue.replace(/[^0-9]/g, ''));
+  let calcInterestRate = Number(interestRateValue.replace('%', ''));
+
   const userInputs = [homePrice, downPayment, interestRate];
 
   let loanAmount = calcHomePrice - calcDownPayment;
@@ -52,8 +58,8 @@ const submitValues = submitButton.addEventListener('click', (event) => {
   userInputs.forEach((input) => {
     input.parentElement.removeAttribute('data-error') |
       input.parentElement.parentElement.removeAttribute('data-error');
-      
-    if (input.value === '$' || input.value === '') {
+
+    if (input.value === '$' || input.value === '' || input.value === '%') {
       event.preventDefault();
       input.parentElement.setAttribute('data-error', 'Mandatory field') |
         input.parentElement.parentElement.setAttribute(
@@ -69,8 +75,8 @@ const submitValues = submitButton.addEventListener('click', (event) => {
       'Down payment cannot be greater than home price'
     );
     event.preventDefault();
-  } else if (interestRateValue < 0) {
-    interestRate.parentElement.setAttribute(
+  } else if (calcInterestRate < 0) {
+    calcInterestRate.parentElement.setAttribute(
       'data-error',
       'Interest cannot be less than 0'
     );
@@ -78,9 +84,10 @@ const submitValues = submitButton.addEventListener('click', (event) => {
   }
 
   printFinalResults(
-    calculationFormula(interestRateValue, loanAmount, yearsOfMortgageValue)
+    calculationFormula(calcInterestRate, loanAmount, yearsOfMortgageValue)
   );
-});
+}
+
 /**
  * @param {number} intRateVal Interest Rate(%)
  * @param {number} loanAmt Loan Amount ($)
@@ -98,11 +105,16 @@ function calculationFormula(intRateVal, loanAmt, years) {
  * @param {number} formula calculated value for Total Monthly Payment
  */
 function printFinalResults(formula) {
+  let formattedValue = currencyFormatter(formula).format(formula);
   let valueUnchanged = document.createTextNode('$ --');
-  let newValue = document.createTextNode(`${formula.toFixed(2)}`);
 
   /** Checks if the final number is valid and prints it. */
   isNaN(formula) || formula < 0
     ? (totalMonthlyPayment.textContent = valueUnchanged.data)
-    : (totalMonthlyPayment.textContent = `$ ${newValue.data}`);
+    : (totalMonthlyPayment.textContent = `${formattedValue}`);
 }
+
+export default {
+  calculationFormula,
+  printFinalResults,
+};
