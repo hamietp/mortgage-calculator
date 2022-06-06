@@ -1,7 +1,7 @@
 .results-panel {
   background: $main-black;
   margin: 0 17px 96px 18px;
-  padding: 20px 18.5px 0 20.5px;
+  padding: 20px 18.5px 28px 20.5px;
   border-radius: 0px 0px 8px 8px;
 
   &__label {
@@ -64,8 +64,9 @@
       font-size: 11px;
       line-height: 150%;
 
-      padding-bottom: 28px;
+      display: flex;
 
+      margin-bottom: 0;
       color: #ffffff;
 
       p {

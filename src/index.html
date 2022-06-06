@@ -21,7 +21,7 @@
           novalidate
         >
           <div class="calculator__row">
-            <div class="calculator__label">Home Price</div>
+            <label class="calculator__label" for="homePrice">Home Price</label>
             <input
               type="text"
               class="calculator__text-input"
@@ -33,12 +33,16 @@
           </div>
 
           <div class="calculator__row">
-            <div class="calculator__label">Down Payment</div>
+            <label class="calculator__label" for="downPayment"
+              >Down Payment</label
+            >
             <div class="calculator__split">
               <input
                 class="calculator__text-input split"
                 type="text"
                 id="downPayment"
+                maxlength="11"
+                minlength="1"
                 value="$"
               />
               <input
@@ -52,15 +56,50 @@
           </div>
 
           <div class="calculator__row">
-            <div class="calculator__label">Loan Term</div>
+            <label class="calculator__label" for="yearsOfMortgage"
+              >Loan Term</label
+            >
             <select
               class="calculator__text-input dropdown"
               id="yearsOfMortgage"
-            ></select>
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+              <option value="8">8</option>
+              <option value="9">9</option>
+              <option value="10">10</option>
+              <option value="11">11</option>
+              <option value="12">12</option>
+              <option value="13">13</option>
+              <option value="14">14</option>
+              <option value="15">15</option>
+              <option value="16">16</option>
+              <option value="17">17</option>
+              <option value="18">18</option>
+              <option value="19">19</option>
+              <option value="20">20</option>
+              <option value="21">21</option>
+              <option value="22">22</option>
+              <option value="23">23</option>
+              <option value="24">24</option>
+              <option value="25">25</option>
+              <option value="26">26</option>
+              <option value="27">27</option>
+              <option value="28">28</option>
+              <option value="29">29</option>
+              <option value="30">30</option>
+            </select>
           </div>
 
-          <div class="calculator__row col2">
-            <div class="calculator__label">Interest Rate(%)</div>
+          <div class="calculator__row">
+            <label class="calculator__label" for="interestRate"
+              >Interest Rate(%)</label
+            >
             <input
               class="calculator__text-input"
               type="text"
@@ -71,38 +110,36 @@
           </div>
 
           <div class="calculate">
-            <input
-              class="calculate__button"
-              type="submit"
-              value="Calculate"
-              id="btn-submit"
-            />
+            <button class="calculate__button" type="submit" id="btn-submit">
+              Calculate
+            </button>
           </div>
         </form>
       </div>
       <div class="results-panel">
-        <span class="results-panel__label">Your results</span>
+        <label class="results-panel__label" for="totalMonthlyPayment"
+          >Your results</label
+        >
         <hr />
         <div class="results-container">
           <div class="results-container__row">
-            <span class="results-container__label">Total Monthly Payment</span>
+            <label class="results-container__label" for="totalMonthlyPayment"
+              >Total Monthly Payment</label
+            >
             <span class="results-container__value" id="totalMonthlyPayment"
               >$ --</span
             >
           </div>
-          <div class="results-container__row">
-            <div class="results-container__disclaimer">
-              <p>
-                This estimate is based on a fixed interest rate and does not
-                include mortgage loan insurance premiums.
-              </p>
-              <br />
-              <p>
-                These calculations are for guidance only. You will need to
-                contact a mortgage lender directly to find out exactly how much
-                your monthly payments would be.
-              </p>
-            </div>
+          <div class="results-container__disclaimer">
+            <p>
+              This estimate is based on a fixed interest rate and does not
+              include mortgage loan insurance premiums.
+            </p>
+            <p>
+              These calculations are for guidance only. You will need to contact
+              a mortgage lender directly to find out exactly how much your
+              monthly payments would be.
+            </p>
           </div>
         </div>
       </div>

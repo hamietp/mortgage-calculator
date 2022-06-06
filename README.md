@@ -1,5 +1,8 @@
 # Mortgage Calculator
 
+## Requirements
+Maximum Node version: [`16.0.0`](https://nodejs.org/en/download/). This is required because some packages in the boilerplate may not be compatible with Node v17 and later.
+
 ## Template used:
 - Webpack Boilerplate by Tania Rascia   
 https://github.com/taniarascia/webpack-boilerplate   
@@ -11,9 +14,12 @@ This boilerplate is a starting point for a webpack project. It includes:
 - PostCSS (although not used in this project)   
 
 # Known bugs
-- ?
+- When in Desktop mode, the `hr` tag below "Your Results" may get disaligned with the left panel `hr` when screen width < 1267px.
+- Although its a `form`, the `submit` is not happening by default when pressing `enter`. I made it happen by adding an `eventListener` to the `form` tag.
 
 ## Installation
+
+
 
 Clone this repo and npm install.
 
