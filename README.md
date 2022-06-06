@@ -10,7 +10,7 @@ This boilerplate is a starting point for a webpack project. It includes:
 - Sass
 - PostCSS (although not used in this project)   
 
-## Known bugs
+# Known bugs
 - ?
 
 ## Installation
