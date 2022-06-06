@@ -144,7 +144,11 @@ function currencyFieldsAllowedDigits(event) {
 
 function interestRateAllowedDigits(event) {
   const key = event.which || event.keyCode;
-  if (key === 46 || key === 110 || key === 190 || (key >= 48 && key <= 57)) {
+  const decimals = key === 46 || key === 110 || key === 190
+  if (decimals && event.target.value.indexOf('.') !== -1) {
+    event.preventDefault();
+  }
+  if (decimals || (key >= 48 && key <= 57)) {
     return true;
   } else {
     event.preventDefault();
