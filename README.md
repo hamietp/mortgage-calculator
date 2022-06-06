@@ -1,7 +1,9 @@
 # Mortgage Calculator
 
 ## Requirements
-Maximum Node version: [`16.0.0`](https://nodejs.org/en/download/). This is required because some packages in the boilerplate may not be compatible with Node v17 and later.
+Maximum Node version: [`16.0.0`](https://nodejs.org/en/download/). This is required because some packages in the boilerplate may not be compatible with Node v17 and later.   
+   
+If some error occur after `npm install` and then running `npm start`, you may need to delete the node_modules folder, run `npm audit fix` and then run `npm install` again.
 
 ## Template used:
 - Webpack Boilerplate by Tania Rascia   
