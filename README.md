@@ -40,10 +40,10 @@ npm start
 You can view the development server at `localhost:8080`.
 
 # How to use the calculator
-Insert the full value of the house in the field `House Value` and the value of the down payment -- if there is some --  in the field `Down Payment`.   
-Enter the amount of years you want to pay the mortgage in the field `Loan Term` and the interest rate in the field `Interest Rate`.   
+Insert the full value of the House in the field `Home Price` and the value of the down payment -- if there is some --  in the field `Down Payment`.   
+Select the amount of years you want to pay the mortgage in the field `Loan Term` and insert the interest rate in the field `Interest Rate`.   
     
-To submit the calculation, you can press `Enter` or click on the button `Calculate`.
+To submit the calculation, you can press `Enter` or click on the button `Calculate` and check your Total Monthly Payment in the `Your Results` panel.
 
 ### Production build
 
