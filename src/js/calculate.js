@@ -1,3 +1,4 @@
+import currencyFormatter from '../js/textInputs.js'
 /**
  * Allows eventListener chaining
  */
@@ -87,14 +88,13 @@ function submitValues(event) {
   );
 }
 
-
 /**
  * @param {number} intRateVal Interest Rate(%)
  * @param {number} loanAmt Loan Amount ($)
  * @param {number} years Loan Term
  * @returns {number} Total Monthly Payment
  */
-export function calculationFormula(intRateVal, loanAmt, years) {
+function calculationFormula(intRateVal, loanAmt, years) {
   let formula =
     ((intRateVal / 100 / 12) * loanAmt) /
     (1 - Math.pow(1 + intRateVal / 100 / 12, -years * 12));
@@ -104,12 +104,17 @@ export function calculationFormula(intRateVal, loanAmt, years) {
 /**
  * @param {number} formula calculated value for Total Monthly Payment
  */
-export function printFinalResults(formula) {
+function printFinalResults(formula) {
+  let formattedValue = currencyFormatter(formula).format(formula);
   let valueUnchanged = document.createTextNode('$ --');
-  let newValue = document.createTextNode(`${formula.toFixed(2)}`);
 
   /** Checks if the final number is valid and prints it. */
   isNaN(formula) || formula < 0
     ? (totalMonthlyPayment.textContent = valueUnchanged.data)
-    : (totalMonthlyPayment.textContent = `$ ${newValue.data}`);
+    : (totalMonthlyPayment.textContent = `${formattedValue}`);
 }
+
+export default {
+  calculationFormula,
+  printFinalResults,
+};

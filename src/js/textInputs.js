@@ -7,7 +7,7 @@ let loanAmountPercentage = document.getElementById('loanAmountPercentage');
 const formattedInputs = [homePrice, downPayment];
 const textInputs = [homePrice, downPayment, interestRate];
 
-export function currencyFormatter(value) {
+function currencyFormatter(value) {
   value = new Intl.NumberFormat('en-US', {
     style: 'currency',
     currency: 'USD',
@@ -15,6 +15,8 @@ export function currencyFormatter(value) {
 
   return value;
 }
+
+export default currencyFormatter;
 
 /**
  * Allows eventListener chaining

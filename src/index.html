@@ -17,7 +17,6 @@
         <form
           class="calculator"
           autocomplete="off"
-          onsubmit="return false"
           id="calculatorForm"
           novalidate
         >
@@ -30,7 +29,6 @@
               minlength="1"
               id="homePrice"
               value="$"
-              onkeypress="return event.keyCode >= 48 && event.keyCode <= 57"
             />
           </div>
 
@@ -42,7 +40,6 @@
                 type="text"
                 id="downPayment"
                 value="$"
-                onkeypress="return event.keyCode >= 48 && event.keyCode <= 57"
               />
               <input
                 class="calculator__text-input split"
@@ -70,14 +67,16 @@
               maxlength="4"
               id="interestRate"
               value="%"
-              onkeypress="return (event.keyCode === 46 ||
-            event.keyCode === 110 || event.keyCode === 190) || (event.keyCode >=
-            48 && event.keyCode <= 57)"
             />
           </div>
 
           <div class="calculate">
-            <input class="calculate__button" type="submit" value="Calculate" id="btn-submit">
+            <input
+              class="calculate__button"
+              type="submit"
+              value="Calculate"
+              id="btn-submit"
+            />
           </div>
         </form>
       </div>
