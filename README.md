@@ -13,7 +13,7 @@ This boilerplate is a starting point for a webpack project. It includes:
 - Sass
 - PostCSS (although not used in this project)   
 
-# Known bugs
+## Known bugs
 - When in Desktop mode, the `hr` tag below "Your Results" may get disaligned with the left panel `hr` when screen width < 1267px.
 - Although its a `form`, the `submit` is not happening by default when pressing `enter`. I made it happen by adding an `eventListener` to the `form` tag.
 
