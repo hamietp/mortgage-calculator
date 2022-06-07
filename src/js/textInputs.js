@@ -19,7 +19,6 @@ const textInputs = [homePrice, downPayment, interestRate];
  * - formatting the input value to currency and decimal format.
  */
 const textInputsEventHandlers = function () {
-
   /**
    * Removes the data-error attribute from each input separately
    * when the user focus the input again.
@@ -55,12 +54,15 @@ const textInputsEventHandlers = function () {
    */
   formattedInputs.forEach((element) => {
     element.addEventListener('focus', () => {
-
       // Places the cursor after the last digit
       const eol = element.value.length;
       element.setSelectionRange(eol, eol);
 
-      if (element.value === '$' || element.value === '') {
+      if (
+        element.value === '$' ||
+        element.value === '' ||
+        element.value === '$0'
+      ) {
         element.value = '$';
       } else {
         element.value = element.value.replace(/[^0-9.$]/g, '');
@@ -82,7 +84,7 @@ const textInputsEventHandlers = function () {
       element.value = element.value.replace(/^\$/, '');
 
       element.value === ''
-        ? (element.value = '$')
+        ? (element.value = '$0')
         : (element.value = currencyFormatter(element.value)
             .format(element.value)
             .replace(/^(\D+)/, '$')
@@ -92,11 +94,14 @@ const textInputsEventHandlers = function () {
 
   /** Handles events for interestRate in focus/focusout and keypress */
   interestRate.addEventListener('focus', () => {
+    interestRate.value = '';
     interestRate.value = interestRate.value.replace(/[^0-9.]/g, '');
   });
 
   interestRate.addEventListener('focusout', () => {
-    interestRate.value = interestRate.value.replace(/[^0-9.]/g, '') + '%';
+    interestRate.value = ''
+      ? (interestRate.value = '0%')	
+      : interestRate.value.replace(/[^0-9.]/g, '') + '%';
   });
 
   interestRate.addEventListener('keypress', (event) =>
@@ -119,7 +124,7 @@ const textInputsEventHandlers = function () {
       let loanAmount = calcHomePrice - calcDownPayment;
       let downPaymentPercentage = (loanAmount / calcHomePrice) * 100;
 
-      /** 
+      /**
        * Calculates the percentage of the downPayment displayed
        * in the split input field
        */
