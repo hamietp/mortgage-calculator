@@ -9,7 +9,7 @@
   </head>
 
   <body>
-    <header>Mortgage Calculator</header>
+    <header><h1>Mortgage Calculator</h1></header>
     <div class="split-container">
       <div class="container">
         <p class="container__label">Change values to calculate your results</p>
@@ -117,29 +117,30 @@
         </form>
       </div>
       <div class="results-panel">
-        <label class="results-panel__label" for="totalMonthlyPayment"
-          >Your results</label
-        >
+        <h2 class="results-panel__title" for="totalMonthlyPayment">
+          Your results
+        </h2>
         <hr />
-        <div class="results-container__row">
-          <label class="results-container__label" for="totalMonthlyPayment"
-            >Total Monthly Payment</label
-          >
-          <span class="results-container__value" id="totalMonthlyPayment"
-            >$ --</span
-          >
-        </div>
-        <div class="results-container__disclaimer">
-          <p>
-            This estimate is based on a fixed interest rate and does not include
-            mortgage loan insurance premiums.
-          </p>
-          <br />
-          <p>
-            These calculations are for guidance only. You will need to contact a
-            mortgage lender directly to find out exactly how much your monthly
-            payments would be.
-          </p>
+        <div class="results-container">
+          <div class="results-container__row">
+            <label class="results-container__label" for="totalMonthlyPayment"
+              >Total Monthly Payment</label
+            >
+            <span class="results-container__value" id="totalMonthlyPayment"
+              >$ --</span
+            >
+          </div>
+          <div class="results-container__row">
+            <p>
+              This estimate is based on a fixed interest rate and does not
+              include mortgage loan insurance premiums.
+            </p>
+            <p>
+              These calculations are for guidance only. You will need to contact
+              a mortgage lender directly to find out exactly how much your
+              monthly payments would be.
+            </p>
+          </div>
         </div>
       </div>
     </div>

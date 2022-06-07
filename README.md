@@ -19,9 +19,10 @@ This boilerplate is a starting point for a webpack project. It includes:
 - When in Desktop mode, the `hr` tag below "Your Results" may get disaligned with the left panel `hr` when screen width < 1267px.
 - Although its a `form`, the `submit` is not happening by default when pressing `enter`. I made it happen by adding an `eventListener` to the `form` tag.
 
+### Possible Improvements
+- `Down Payment %` input could be also an input field for calculation. Currently, it is only possible to input the value on Down Payment as a fixed amount($), and not using the percentage field as an input.
+
 ## Installation
-
-
 
 Clone this repo and npm install.
 
