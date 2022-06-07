@@ -45,7 +45,7 @@ Select the amount of years you want to pay the mortgage in the field `Loan Term`
     
 To submit the calculation, you can press `Enter` or click on the button `Calculate` and check your Total Monthly Payment in the `Your Results` panel.
 
-### Production build
+# Production build
 
 ```bash
 npm run build

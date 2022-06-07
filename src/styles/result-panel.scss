@@ -64,7 +64,7 @@
       font-size: 11px;
       line-height: 150%;
 
-      display: flex;
+      display: block;
 
       margin-bottom: 0;
       color: #ffffff;
@@ -88,7 +88,10 @@
     padding-top: 44px;
     padding-left: 33px;
     padding-right: 52px;
+    padding-bottom: 44px;
     border-radius: 0px 8px 8px 0px;
+
+    position: relative;
 
     &__label {
       font-size: 24px;
@@ -114,9 +117,9 @@
       }
 
       &__disclaimer {
-        margin-top: 100px;
-        padding-bottom: 0;
-        font-family: 'Graphik-Medium', sans-serif;
+        position: absolute;
+        bottom: 44px;
+        padding-right: 34px;
       }
     }
   }
