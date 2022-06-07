@@ -22,6 +22,12 @@ This boilerplate is a starting point for a webpack project. It includes:
 ### Possible Improvements
 - `Down Payment %` input could be also an input field for calculation. Currently, it is only possible to input the value on Down Payment as a fixed amount($), and not using the percentage field as an input.
 
+### Notes regarding the branches
+- The `master` branch is the production branch.
+- The `dev-test-page` branch is the development branch.
+   
+- There is a `dev` branch, which I used to test another resources, but does not contain any code that is not yet merged to the `master` branch.
+
 ## Installation
 
 Clone this repo and npm install.
